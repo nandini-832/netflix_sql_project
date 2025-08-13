@@ -17,7 +17,8 @@ The data for this project is sourced from the Kaggle dataset: [
 # Schema
 
 
-```CREATE TABLE netflix
+```sql
+CREATE TABLE netflix
 (
     show_id      VARCHAR(5),
     type         VARCHAR(10),
@@ -34,6 +35,9 @@ The data for this project is sourced from the Kaggle dataset: [
 );
 
 -- 1. Identify the trend of content production — Count the number of titles released per year and visualize the growth or decline over time.
+
+```
+
 
 **`sql`**
 ```sql
