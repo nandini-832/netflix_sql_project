@@ -16,7 +16,7 @@ The data for this project is sourced from the Kaggle dataset: [
 
 # Schema
 
-DROP TABLE IF EXISTS netflix;
+
 ```CREATE TABLE netflix
 (
     show_id      VARCHAR(5),
@@ -390,8 +390,9 @@ WHERE y.maturity_category <> 'Unknown'
 ORDER BY y.release_year, y.maturity_category;
 
 -- Objective: Profile content maturity categories annually and determine their percentage share over time.
+...
 
-## Findings and Conclusions
+# Findings and Conclusions
 Our analysis of Netflix’s content reveals several key insights. Content production trends fluctuate over time, with notable growth in certain genres in recent years. TV shows tend to have larger casts and vary in the number of seasons depending on the country.
 
 Directors vary widely — some collaborate with many actors, while others have only one title on the platform. Content maturity ratings show Netflix balances family-friendly, teen, and adult programming, adjusting over time to audience preferences.
