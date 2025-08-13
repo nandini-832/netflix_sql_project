@@ -36,18 +36,13 @@ CREATE TABLE netflix
 
 -- 1. Identify the trend of content production — Count the number of titles released per year and visualize the growth or decline over time.
 
-```
-
-
-**`sql`**
-```sql
 SELECT 
     release_year,
     COUNT(*) AS total_titles
 FROM netflix
 GROUP BY release_year
 ORDER BY release_year;
-```
+
 
 -- Objective: Analyze the yearly production trend by counting total titles released each year.
 
@@ -396,9 +391,10 @@ JOIN yearly_totals t ON y.release_year = t.release_year
 WHERE y.maturity_category <> 'Unknown'
 ORDER BY y.release_year, y.maturity_category;
 
+
 -- Objective: Profile content maturity categories annually and determine their percentage share over time.
 ...
-
+```
 # Findings and Conclusions
 Our analysis of Netflix’s content reveals several key insights. Content production trends fluctuate over time, with notable growth in certain genres in recent years. TV shows tend to have larger casts and vary in the number of seasons depending on the country.
 
