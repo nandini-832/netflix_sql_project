@@ -35,7 +35,7 @@ CREATE TABLE netflix
 
 -- 1. Identify the trend of content production — Count the number of titles released per year and visualize the growth or decline over time.
 
-SELECT 
+```SELECT 
     release_year,
     COUNT(*) AS total_titles
 FROM netflix
@@ -400,39 +400,3 @@ Seasonal spikes in new releases suggest strategic timing, and regional differenc
 
 Overall, these findings paint a picture of a dynamic, evolving content library shaped by audience demand, regional trends, and strategic decisions — offering valuable guidance for future content development and marketing strategies.
 
-WITH recent_data AS (
-    SELECT 
-        release_year,
-        TRIM(UNNEST(STRING_TO_ARRAY(listed_in, ','))) AS genre
-    FROM netflix
-    WHERE release_year >= EXTRACT(YEAR FROM CURRENT_DATE) - 5
-),
-year_range AS (
-    SELECT 
-        genre,
-        MIN(release_year) AS first_year,
-        MAX(release_year) AS last_year
-    FROM recent_data
-    GROUP BY genre
-),
-counts AS (
-    SELECT 
-        genre,
-        release_year,
-        COUNT(*) AS title_count
-    FROM recent_data
-    GROUP BY genre, release_year
-)
-SELECT 
-    yr.genre,
-    c1.title_count AS start_count,
-    c2.title_count AS end_count,
-    CASE 
-        WHEN c1.title_count = 0 THEN NULL
-        ELSE ROUND(((c2.title_count - c1.title_count) * 100.0 / c1.title_count), 2)
-    END AS growth_percent
-FROM year_range yr
-JOIN counts c1 ON yr.genre = c1.genre AND yr.first_year = c1.release_year
-JOIN counts c2 ON yr.genre = c2.genre AND yr.last_year = c2.release_year
-ORDER BY growth_percent DESC NULLS LAST
-LIMIT 5;
