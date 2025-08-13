@@ -17,7 +17,7 @@ The data for this project is sourced from the Kaggle dataset: [
 # Schema
 
 DROP TABLE IF EXISTS netflix;
-CREATE TABLE netflix
+```CREATE TABLE netflix
 (
     show_id      VARCHAR(5),
     type         VARCHAR(10),
