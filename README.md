@@ -36,12 +36,14 @@ The data for this project is sourced from the Kaggle dataset: [
 -- 1. Identify the trend of content production — Count the number of titles released per year and visualize the growth or decline over time.
 
 **`sql`**
+```sql
 SELECT 
     release_year,
     COUNT(*) AS total_titles
 FROM netflix
 GROUP BY release_year
 ORDER BY release_year;
+```
 
 -- Objective: Analyze the yearly production trend by counting total titles released each year.
 
